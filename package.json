@@ -1,5 +1,5 @@
 {
-  "name": "swarm-starter",
+  "name": "swarm-wasp-starter",
   "type": "module",
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

@@ -1,7 +1,7 @@
 import { App } from "@ingenyus/swarm-wasp";
 
 // App Configurations
-const app = await App.create("swarm-starter", {
+const app = await App.create("swarm-wasp-starter", {
   title: "New Wasp App",
   wasp: { version: "^0.18.1" },
   head: [
