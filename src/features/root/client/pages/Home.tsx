@@ -1,48 +1,51 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-    Alert,
-    AlertDescription,
-    AlertTitle,
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-    Badge,
-    Button,
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-    Checkbox,
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-    Input,
-    Label,
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-    Progress,
-    RadioGroup,
-    RadioGroupItem,
-    Switch,
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-    Textarea,
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Checkbox,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Input,
+  Label,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Progress,
+  RadioGroup,
+  RadioGroupItem,
+  Switch,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "../../../../shared/client/components/ui";
-import { ThemeSetting, useTheme } from "../../../../shared/client/hooks/useTheme";
+import {
+  ThemeSetting,
+  useTheme,
+} from "../../../../shared/client/hooks/useTheme";
 
 export function Home() {
   const [switchOn, setSwitchOn] = useState(false);
@@ -52,7 +55,7 @@ export function Home() {
     <div className={"p-6 flex flex-col gap-10"}>
       <Card>
         <CardHeader>
-          <CardTitle>Welcome to Wasp Sensible Starter!</CardTitle>
+          <CardTitle>Welcome to Swarm Wasp Starter!</CardTitle>
         </CardHeader>
         <CardContent className={"flex flex-col gap-4"}>
           <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
@@ -168,19 +171,21 @@ export function Home() {
         </AccordionItem>
       </Accordion>
 
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant={"outline"}>Open Dialog</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Dialog Title</DialogTitle>
-            <DialogDescription>
-              This is a modal dialog using ShadCN.
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant={"outline"}>Open Dialog</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Dialog Title</DialogTitle>
+              <DialogDescription>
+                This is a modal dialog using ShadCN.
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      </div>
 
       <div className={"flex gap-4 items-center"}>
         <Popover>

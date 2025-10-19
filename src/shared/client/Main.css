@@ -1,12 +1,12 @@
 @import 'tailwindcss';
-@source '.';
+@source '../..';
 
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
-
 @custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Remove Tailwind's default Surface colors */
   --color-zinc-*: initial;
