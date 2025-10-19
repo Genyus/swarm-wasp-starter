@@ -1,46 +1,46 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Checkbox,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Input,
-  Label,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Progress,
-  RadioGroup,
-  RadioGroupItem,
-  Switch,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Textarea,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+    Alert,
+    AlertDescription,
+    AlertTitle,
+    Avatar,
+    AvatarFallback,
+    AvatarImage,
+    Badge,
+    Button,
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+    Checkbox,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    Input,
+    Label,
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+    Progress,
+    RadioGroup,
+    RadioGroupItem,
+    Switch,
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
+    Textarea,
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
 } from "../../../../shared/client/components/ui";
 import { ThemeSetting, useTheme } from "../../../../shared/client/hooks/useTheme";
 
@@ -49,18 +49,18 @@ export function Home() {
   const t = useTheme();
 
   return (
-    <div className={"p-6 space-y-10"}>
+    <div className={"p-6 flex flex-col gap-10"}>
       <Card>
         <CardHeader>
           <CardTitle>Welcome to Wasp Sensible Starter!</CardTitle>
         </CardHeader>
-        <CardContent className={"space-y-4"}>
+        <CardContent className={"flex flex-col gap-4"}>
           <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
-            <div className={"space-y-2"}>
+            <div className={"flex flex-col gap-2"}>
               <Label htmlFor={"name"}>{"Name"}</Label>
               <Input id={"name"} placeholder={"Your name"} />
             </div>
-            <div className={"space-y-2"}>
+            <div className={"flex flex-col gap-2"}>
               <Label htmlFor={"email"}>{"Email"}</Label>
               <Input
                 id={"email"}
@@ -70,7 +70,7 @@ export function Home() {
             </div>
           </div>
 
-          <div className={"space-y-2"}>
+          <div className={"flex flex-col gap-2"}>
             <Label htmlFor={"bio"}>{"Bio"}</Label>
             <Textarea
               id={"bio"}
