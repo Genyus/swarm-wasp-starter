@@ -101,16 +101,16 @@
     "reset": "npm run reset:wasp",
     "rebuild": "npm run rebuild:wasp",
     "restart": "npm run restart:wasp",
-    "rt": "npm run reset:wasp",
+    "rs": "npm run reset:wasp",
     "rb": "npm run rebuild:wasp",
-    "rs": "npm run restart:wasp",
-    "rtw": "npm run reset:wasp",
-    "rtd": "npm run reset:db",
+    "rt": "npm run restart:wasp",
+    "rsw": "npm run reset:wasp",
+    "rsd": "npm run reset:db",
     "rta": "npm run reset:all",
     "rbw": "npm run rebuild:wasp",
     "rbd": "npm run rebuild:db",
     "rba": "npm run rebuild:all",
-    "rsw": "npm run restart:wasp",
-    "rsd": "npm run restart:db"
+    "rtw": "npm run restart:wasp",
+    "rtd": "npm run restart:db"
   }
 }
