@@ -1,5 +1,5 @@
-import { Toaster } from 'react-hot-toast';
 import { Outlet } from "react-router-dom";
+import { Toaster } from 'sonner';
 import { useTheme, useThemeProvider } from "../hooks/useTheme";
 import '../Main.css';
 import { TooltipProvider } from "./ui";
@@ -13,9 +13,12 @@ export default function Layout() {
 
     return <ThemeProvider>
         <TooltipProvider>
-            <Toaster toastOptions={{
-                className: 'bg-surface-800 text-surface-100 border',
-            }}/>
+            <Toaster 
+                position="top-center"
+                toastOptions={{
+                    className: 'bg-surface-800 text-surface-100 border',
+                }}
+            />
             <Outlet/>
         </TooltipProvider>
     </ThemeProvider>

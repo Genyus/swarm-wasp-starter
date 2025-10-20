@@ -3,7 +3,7 @@ A minimal starter kit for Wasp with TailwindCSS and ShadCN with some small chang
 
 Notes:
 - ShadCN Chart is not included, but it can be added easily
-- Sonner (toasts) are not included. `react-hot-toast` is used instead.
+- Sonner is included for toast notifications
 
 To create an app using this template run `npx wasp-sensible` and follow the prompts.
 
