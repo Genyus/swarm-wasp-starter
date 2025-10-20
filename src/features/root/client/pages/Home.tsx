@@ -1,235 +1,235 @@
-import { useState } from "react";
-import { toast } from "sonner";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+  Blocks,
+  Code2,
+  FolderTree,
+  Palette,
+  Settings,
+  Zap,
+} from "lucide-react";
+import lucideIcon from "../../../../assets/lucide.svg";
+import shadcnuiIcon from "../../../../assets/shadcnui.svg";
+import tailwindIcon from "../../../../assets/tailwind.svg";
+import typescriptIcon from "../../../../assets/typescript.svg";
+import waspIcon from "../../../../assets/wasp.svg";
+import {
   Alert,
   AlertDescription,
   AlertTitle,
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Badge,
-  Button,
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  Checkbox,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Input,
-  Label,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Progress,
-  RadioGroup,
-  RadioGroupItem,
-  Switch,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Textarea,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
+  ThemeSwitcher,
 } from "../../../../shared/client/components/ui";
-import {
-  ThemeSetting,
-  useTheme,
-} from "../../../../shared/client/hooks/useTheme";
+import { useTheme } from "../../../../shared/client/hooks/useTheme";
 
 export function Home() {
-  const [switchOn, setSwitchOn] = useState(false);
-  const t = useTheme();
+  const theme = useTheme();
+
+  const features = [
+    {
+      icon: Code2,
+      title: "Easy Wasp Configuration",
+      description:
+        "Enhanced configuration with composable files and fluent helper methods.",
+    },
+    {
+      icon: FolderTree,
+      title: "Feature-Based Architecture",
+      description:
+        "Consistent, feature-based architecture, keeping your codebase easy to maintain.",
+    },
+    {
+      icon: Zap,
+      title: "Boilerplate Generation",
+      description:
+        "Use CLI commands or AI tools to generate type-safe Wasp entities in seconds.",
+    },
+    {
+      icon: Blocks,
+      title: "Extensible UI",
+      description:
+        "Built-in support for shadcn/ui components and Lucide icons.",
+    },
+    {
+      icon: Settings,
+      title: "Developer-Friendly Tools",
+      description:
+        "Includes useful package scripts for managing your development environment.",
+    },
+    {
+      icon: Palette,
+      title: "Dark Mode Support",
+      description:
+        "Built-in, responsive theme switcher with support for system preferences.",
+    },
+  ];
+
+  const technologies = [
+    { name: "TypeScript", icon: typescriptIcon },
+    { name: "Wasp", icon: waspIcon },
+    { name: "Tailwind CSS 4", icon: tailwindIcon },
+    { name: "Lucide Icons", icon: lucideIcon },
+    {
+      name: "shadcn/ui",
+      icon: shadcnuiIcon,
+    },
+  ];
 
   return (
-    <div className={"flex flex-col gap-10 p-6"}>
+    <div className="mx-auto max-w-6xl space-y-8 p-6">
+      {/* Theme Switcher */}
+      <div className="flex justify-end">
+        <ThemeSwitcher
+          value={theme.themeSetting}
+          onChange={theme.setTheme}
+          defaultValue="system"
+        />
+      </div>
+
+      {/* Hero Section */}
       <Card>
         <CardHeader>
-          <CardTitle>Welcome to Swarm Wasp Starter!</CardTitle>
+          <CardTitle className="text-3xl">
+            Welcome to Swarm Wasp Starter
+          </CardTitle>
+          <CardDescription className="text-lg">
+            A minimal foundation for rapidly building full-stack Wasp
+            applications. This template provides a clean, consistent structure
+            with a range of tools and enhancements to improve the developer
+            experience.
+          </CardDescription>
         </CardHeader>
-        <CardContent className={"flex flex-col gap-4"}>
-          <div className={"grid grid-cols-1 gap-4 md:grid-cols-2"}>
-            <div className={"flex flex-col gap-2"}>
-              <Label htmlFor={"name"}>{"Name"}</Label>
-              <Input id={"name"} placeholder={"Your name"} />
-            </div>
-            <div className={"flex flex-col gap-2"}>
-              <Label htmlFor={"email"}>{"Email"}</Label>
-              <Input
-                id={"email"}
-                placeholder={"you@example.com"}
-                type={"email"}
-              />
-            </div>
+      </Card>
+
+      {/* Features Grid */}
+      <div>
+        <h2 className="mb-4 text-2xl font-bold">What's Included</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <Card key={feature.title}>
+                <CardHeader>
+                  <div className="mb-2 flex items-center gap-2">
+                    <Icon className="size-5 text-primary" />
+                    <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  </div>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Getting Started */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Getting Started</CardTitle>
+          <CardDescription>
+            Everything you need to start building your application
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h3 className="mb-2 font-semibold">Generate Wasp Objects</h3>
+            <p className="mb-2 text-sm text-muted-foreground">
+              Use the Swarm CLI to quickly scaffold entities, queries, actions
+              and more:
+            </p>
+            <code className="block rounded bg-muted px-3 py-2 text-sm">
+              npm run swarm -- generate entity Task
+            </code>
           </div>
 
-          <div className={"flex flex-col gap-2"}>
-            <Label htmlFor={"bio"}>{"Bio"}</Label>
-            <Textarea
-              id={"bio"}
-              placeholder={"Tell us a bit about yourself..."}
-            />
+          <div>
+            <h3 className="mb-2 font-semibold">Connect AI Tools</h3>
+            <p className="mb-2 text-sm text-muted-foreground">
+              Connect Cursor, Claude Code or VS Code Copilot to the MCP server
+              for AI-assisted development:
+            </p>
+            <code className="block rounded bg-muted px-3 py-2 text-sm">
+              npm run swarm:mcp
+            </code>
           </div>
 
-          <div className={"flex items-center gap-2"}>
-            <Switch
-              checked={switchOn}
-              onCheckedChange={setSwitchOn}
-              id={"updates"}
-            />
-            <Label htmlFor={"updates"}>Switch :)</Label>
+          <div>
+            <h3 className="mb-2 font-semibold">Project Structure</h3>
+            <p className="mb-2 text-sm text-muted-foreground">
+              Swarm uses a feature-based architecture with one object per file:
+            </p>
+            <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
+              {`src/
+├── features/
+│   └── tasks/
+│       ├── tasks.wasp.ts       # Feature config
+│       ├── client/
+│       │   └── pages/
+│       │       └── TaskList.tsx
+│       └── server/
+│           ├── actions/
+│           │   └── createTask.ts
+│           └── queries/
+│               └── getTasks.ts
+└── shared/
+    └── client/
+        └── components/`}
+            </code>
           </div>
 
-          <div className={"flex items-center gap-4"}>
-            <Checkbox id={"terms"} />
-            <Label htmlFor={"terms"}>Checkbox :)</Label>
+          <div>
+            <h3 className="mb-2 font-semibold">Configuration Pattern</h3>
+            <p className="text-sm text-muted-foreground">
+              Configuration is split across features, with each directory
+              containing its own <code>.wasp.ts</code> file. Fluent helper
+              methods make configuration concise and maintainable, replacing
+              Wasp's default monolithic approach.
+            </p>
           </div>
 
-          <RadioGroup
-            className={"flex gap-4"}
-            value={t.themeSetting}
-            onValueChange={(v: ThemeSetting) => t.setTheme(v)}
-          >
-            <div className={"flex items-center gap-2"}>
-              <RadioGroupItem value={"light"} id={"r1"} />
-              <Label htmlFor={"r1"}>Light</Label>
-            </div>
-            <div className={"flex items-center gap-2"}>
-              <RadioGroupItem value={"dark"} id={"r2"} />
-              <Label htmlFor={"r2"}>Dark</Label>
-            </div>
-            <div className={"flex items-center gap-2"}>
-              <RadioGroupItem value={"system"} id={"r3"} />
-              <Label htmlFor={"r3"}>System</Label>
-            </div>
-          </RadioGroup>
-
-          <div className={"flex flex-wrap gap-2"}>
-            <Button>Default</Button>
-            <Button variant={"outline"}>Outline</Button>
-            <Button variant={"secondary"}>Secondary</Button>
-            <Button variant={"destructive"}>Delete</Button>
-            <Button
-              onClick={() =>
-                toast.promise(
-                  new Promise((resolve) => {
-                    setTimeout(() => {
-                      resolve("Success!");
-                    }, 1000);
-                  }),
-                  {
-                    loading: "Preparing toast...",
-                    success: "Toast!",
-                    error: "Error!",
-                  },
-                )
-              }
-            >
-              Show Toast
-            </Button>
-          </div>
+          <Alert className="mt-4">
+            <Code2 className="size-4" />
+            <AlertTitle>This Page</AlertTitle>
+            <AlertDescription>
+              Rendered by the <code>Home</code> component at{" "}
+              <code className="font-mono text-xs">
+                src/features/root/client/pages/Home.tsx
+              </code>
+            </AlertDescription>
+          </Alert>
         </CardContent>
       </Card>
 
-      <Tabs defaultValue={"account"} className={"w-full"}>
-        <TabsList>
-          <TabsTrigger value={"account"}>Account</TabsTrigger>
-          <TabsTrigger value={"settings"}>Settings</TabsTrigger>
-        </TabsList>
-        <TabsContent value={"account"}>
-          <Card>
-            <CardHeader>
-              <CardTitle>Account Info</CardTitle>
-            </CardHeader>
-            <CardContent>Your account details go here.</CardContent>
-          </Card>
-        </TabsContent>
-        <TabsContent value={"settings"}>
-          <Card>
-            <CardHeader>
-              <CardTitle>Settings</CardTitle>
-            </CardHeader>
-            <CardContent>Your settings go here.</CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
-
-      <Accordion type={"single"} collapsible className={"w-full"}>
-        <AccordionItem value={"item-1"}>
-          <AccordionTrigger>What is this?</AccordionTrigger>
-          <AccordionContent>
-            This is a starter demo using ShadCN components.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-
-      <div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant={"outline"}>Open Dialog</Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Dialog Title</DialogTitle>
-              <DialogDescription>
-                This is a modal dialog using ShadCN.
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-      </div>
-
-      <div className={"flex items-center gap-4"}>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant={"outline"}>Open Popover</Button>
-          </PopoverTrigger>
-          <PopoverContent>Here is a popover!</PopoverContent>
-        </Popover>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant={"secondary"}>Hover Me</Button>
-          </TooltipTrigger>
-          <TooltipContent>I am a tooltip!</TooltipContent>
-        </Tooltip>
-      </div>
-
-      <Alert>
-        <AlertTitle>Heads up!</AlertTitle>
-        <AlertDescription>This is an alert — check it out!</AlertDescription>
-      </Alert>
-
-      <div className={"flex items-center gap-4"}>
-        <Badge>New</Badge>
-        <Badge variant={"secondary"}>Beta</Badge>
-        <Badge variant={"outline"}>Verified</Badge>
-        <Badge variant={"destructive"}>Error</Badge>
-      </div>
-
-      <div className={"flex items-center gap-4"}>
-        <Avatar>
-          <AvatarImage
-            src={"https://github.com/zkmrtn8.png"}
-            alt={`zkmrtn8's avatar`}
-          />
-          <AvatarFallback>ZM</AvatarFallback>
-        </Avatar>
-        <div className={"w-full max-w-[300px]"}>
-          <Label>Progress</Label>
-          <Progress value={65} />
-        </div>
-      </div>
+      {/* Technology Stack */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Built With</CardTitle>
+          <CardDescription>
+            Modern tools and frameworks that work together seamlessly
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-3">
+            {technologies.map((tech) => (
+              <div
+                key={tech.name}
+                className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-2"
+              >
+                <img
+                  src={tech.icon}
+                  alt={`${tech.name} logo`}
+                  className="size-5"
+                />
+                <span className="text-sm font-medium text-secondary-foreground">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
