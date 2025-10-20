@@ -52,13 +52,13 @@ export function Home() {
   const t = useTheme();
 
   return (
-    <div className={"p-6 flex flex-col gap-10"}>
+    <div className={"flex flex-col gap-10 p-6"}>
       <Card>
         <CardHeader>
           <CardTitle>Welcome to Swarm Wasp Starter!</CardTitle>
         </CardHeader>
         <CardContent className={"flex flex-col gap-4"}>
-          <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
+          <div className={"grid grid-cols-1 gap-4 md:grid-cols-2"}>
             <div className={"flex flex-col gap-2"}>
               <Label htmlFor={"name"}>{"Name"}</Label>
               <Input id={"name"} placeholder={"Your name"} />
@@ -98,7 +98,8 @@ export function Home() {
           <RadioGroup
             className={"flex gap-4"}
             value={t.themeSetting}
-            onValueChange={(v: ThemeSetting) => t.setTheme(v)}>
+            onValueChange={(v: ThemeSetting) => t.setTheme(v)}
+          >
             <div className={"flex items-center gap-2"}>
               <RadioGroupItem value={"light"} id={"r1"} />
               <Label htmlFor={"r1"}>Light</Label>
@@ -113,7 +114,7 @@ export function Home() {
             </div>
           </RadioGroup>
 
-          <div className={"flex gap-2 flex-wrap"}>
+          <div className={"flex flex-wrap gap-2"}>
             <Button>Default</Button>
             <Button variant={"outline"}>Outline</Button>
             <Button variant={"secondary"}>Secondary</Button>
@@ -130,9 +131,10 @@ export function Home() {
                     loading: "Preparing toast...",
                     success: "Toast!",
                     error: "Error!",
-                  }
+                  },
                 )
-              }>
+              }
+            >
               Show Toast
             </Button>
           </div>
@@ -187,7 +189,7 @@ export function Home() {
         </Dialog>
       </div>
 
-      <div className={"flex gap-4 items-center"}>
+      <div className={"flex items-center gap-4"}>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"}>Open Popover</Button>
