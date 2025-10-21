@@ -30,9 +30,9 @@ export function Home() {
   const features = [
     {
       icon: Code2,
-      title: "Easy Wasp Configuration",
+      title: "Enhanced Wasp Configuration",
       description:
-        "Enhanced configuration with composable files and fluent helper methods.",
+        "Streamlined configuration with composable files and fluent helper methods.",
     },
     {
       icon: FolderTree,
@@ -69,12 +69,9 @@ export function Home() {
   const technologies = [
     { name: "TypeScript", icon: typescriptIcon },
     { name: "Wasp", icon: waspIcon },
-    { name: "Tailwind CSS 4", icon: tailwindIcon },
+    { name: "Tailwind CSS", icon: tailwindIcon },
     { name: "Lucide Icons", icon: lucideIcon },
-    {
-      name: "shadcn/ui",
-      icon: shadcnuiIcon,
-    },
+    { name: "shadcn/ui", icon: shadcnuiIcon },
   ];
 
   return (
@@ -134,13 +131,99 @@ export function Home() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
+            <h3 className="mb-2 font-semibold">Project Structure</h3>
+            <p className="mb-2 text-sm text-muted-foreground">
+              <code>swarm-wasp</code> defines a feature-based architecture that
+              creates full-stack feature directories combining client- and
+              server-side code. Server-side components (e.g. actions, queries,
+              jobs, etc) are organised with one object per file, in contrast to
+              Wasp's recommended approach of combining multiple components in a
+              single file. This provides a more consistent, modular structure:
+            </p>
+
+            <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
+              {`src/
+├── features/
+│   └── tasks/
+│       ├── tasks.wasp.ts
+│       ├── client/
+│       │   └── pages/
+│       │       └── TaskList.tsx
+│       └── server/
+│           ├── actions/
+│           │   └── createTask.ts
+│           └── queries/
+│               └── getTasks.ts
+└── shared/
+    └── client/
+        └── components/
+    └── server/
+        └── middleware/`}
+            </code>
+          </div>
+
+          <div>
+            <h3 className="mb-2 font-semibold">Wasp Configuration</h3>
+            <p className="mb-2 text-sm text-muted-foreground">
+              <code>swarm-wasp</code> extends Wasp's{" "}
+              <a
+                href="https://wasp.sh/docs/general/wasp-ts-config"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Typescript config
+              </a>
+              model. Configuration is split across features, with each directory
+              containing a <code>.wasp.ts</code> file that holds declarations
+              for that feature. Fluent helper methods make configuration more
+              concise and readable than the default declarative structure:
+            </p>
+            <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
+              {`import { App } from "@ingenyus/swarm-wasp";
+
+export default function configureFeature(app: App, feature: string): void {
+  app
+    // Route definitions
+    .addRoute(feature, "home", {
+      path: "/",
+      auth: false,
+    })
+    .addRoute(feature, "notFound", {
+      path: "/404",
+      auth: false,
+    })
+    .addRoute(feature, "notFoundRedirect", {
+      path: "*",
+      auth: false,
+    });
+}`}
+            </code>
+          </div>
+
+          <div>
             <h3 className="mb-2 font-semibold">Generate Wasp Objects</h3>
             <p className="mb-2 text-sm text-muted-foreground">
-              Use the Swarm CLI to quickly scaffold entities, queries, actions
-              and more:
+              Use the <code>swarm</code> CLI to quickly scaffold Wasp components
+              (routes, API endpoints, CRUD operations, background jobs, etc), in
+              your Wasp project:
             </p>
             <code className="block rounded bg-muted px-3 py-2 text-sm">
-              npm run swarm -- generate entity Task
+              {`# Create a new "tasks" feature directory, containing a tasks.wasp.ts file
+npm run swarm -- feature tasks
+
+# Configure a route linked to a page component in the client directory
+npm run swarm -- route --feature tasks --path "/tasks"
+
+# Create a set of CRUD operations for the "Task" entity
+npm run swarm -- crud --feature tasks --datatype Task
+              `}
+            </code>
+            <p className="mt-2 text-sm text-muted-foreground">
+              For more information on the available commands, run the following
+              command:
+            </p>
+            <code className="block rounded bg-muted px-3 py-2 text-sm">
+              npm run swarm
             </code>
           </div>
 
@@ -153,40 +236,6 @@ export function Home() {
             <code className="block rounded bg-muted px-3 py-2 text-sm">
               npm run swarm:mcp
             </code>
-          </div>
-
-          <div>
-            <h3 className="mb-2 font-semibold">Project Structure</h3>
-            <p className="mb-2 text-sm text-muted-foreground">
-              Swarm uses a feature-based architecture with one object per file:
-            </p>
-            <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
-              {`src/
-├── features/
-│   └── tasks/
-│       ├── tasks.wasp.ts       # Feature config
-│       ├── client/
-│       │   └── pages/
-│       │       └── TaskList.tsx
-│       └── server/
-│           ├── actions/
-│           │   └── createTask.ts
-│           └── queries/
-│               └── getTasks.ts
-└── shared/
-    └── client/
-        └── components/`}
-            </code>
-          </div>
-
-          <div>
-            <h3 className="mb-2 font-semibold">Configuration Pattern</h3>
-            <p className="text-sm text-muted-foreground">
-              Configuration is split across features, with each directory
-              containing its own <code>.wasp.ts</code> file. Fluent helper
-              methods make configuration concise and maintainable, replacing
-              Wasp's default monolithic approach.
-            </p>
           </div>
 
           <Alert className="mt-4">
