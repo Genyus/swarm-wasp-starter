@@ -24,10 +24,11 @@ const themes = [
   },
 ];
 
+type Theme = "light" | "dark" | "system";
 export type ThemeSwitcherProps = {
-  value?: "light" | "dark" | "system";
-  onChange?: (theme: "light" | "dark" | "system") => void;
-  defaultValue?: "light" | "dark" | "system";
+  value?: Theme;
+  onChange?: (theme: Theme) => void;
+  defaultValue?: Theme;
   className?: string;
 };
 
@@ -75,7 +76,7 @@ export const ThemeSwitcher = ({
             aria-label={label}
             className="relative h-6 w-6 rounded-full"
             key={key}
-            onClick={() => handleThemeClick(key as "light" | "dark" | "system")}
+            onClick={() => handleThemeClick(key as Theme)}
             type="button"
           >
             {isActive && (
@@ -86,10 +87,10 @@ export const ThemeSwitcher = ({
               />
             )}
             <Icon
-              className={cn(
-                "relative z-10 m-auto h-4 w-4",
-                isActive ? "text-foreground" : "text-muted-foreground",
-              )}
+              className={cn("relative z-10 m-auto h-4 w-4")}
+              color={
+                isActive ? "var(--color-secondary-foreground)" : "currentColor"
+              }
             />
           </button>
         );
