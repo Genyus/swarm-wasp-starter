@@ -8,14 +8,14 @@ import { cn } from "src/shared/client/lib/utils";
 
 const themes = [
   {
-    key: "system",
-    icon: Monitor,
-    label: "System theme",
-  },
-  {
     key: "light",
     icon: Sun,
     label: "Light theme",
+  },
+  {
+    key: "system",
+    icon: Monitor,
+    label: "System theme",
   },
   {
     key: "dark",
