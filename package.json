@@ -111,6 +111,7 @@
     "rbd": "npm run rebuild:db",
     "rba": "npm run rebuild:all",
     "rtw": "npm run restart:wasp",
-    "rtd": "npm run restart:db"
+    "rtd": "npm run restart:db",
+    "add-ui": "node scripts/add-shadcn.js"
   }
 }
