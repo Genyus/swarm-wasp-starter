@@ -67,12 +67,12 @@
     "@typescript-eslint/parser": "^8.41.0",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
     "globals": "^16.4.0",
     "prettier": "3.1.1",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "prisma": "5.19.1",
     "rimraf": "^6.0.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "5.8.2",
     "vite": "^7.0.6",
     "wasp-config": "file:../../.local/share/wasp-lang/0.18.1/data/packages/wasp-config"
