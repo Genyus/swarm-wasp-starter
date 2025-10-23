@@ -1,17 +1,24 @@
 import { Outlet } from "react-router-dom";
 import { useThemeProvider } from "../hooks/useTheme";
 import "../Main.css";
+import Footer from "./Footer";
+import Header from "./Header";
 import { Toaster, TooltipProvider } from "./ui";
 
-// TODO: Add things like a header and footer
 export default function Layout() {
   const ThemeProvider = useThemeProvider();
 
   return (
     <ThemeProvider>
       <TooltipProvider>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
         <Toaster position="top-center" />
-        <Outlet />
       </TooltipProvider>
     </ThemeProvider>
   );

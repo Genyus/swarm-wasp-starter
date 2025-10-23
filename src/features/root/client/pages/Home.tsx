@@ -6,8 +6,11 @@ import {
   Settings,
   Zap,
 } from "lucide-react";
+import eslintIcon from "../../../../assets/eslint.svg";
 import lucideIcon from "../../../../assets/lucide.svg";
+import prettierIcon from "../../../../assets/prettier.svg";
 import shadcnuiIcon from "../../../../assets/shadcnui.svg";
+import swarmIcon from "../../../../assets/swarm.svg";
 import tailwindIcon from "../../../../assets/tailwind.svg";
 import typescriptIcon from "../../../../assets/typescript.svg";
 import waspIcon from "../../../../assets/wasp.svg";
@@ -20,13 +23,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  ThemeSwitcher,
 } from "../../../../shared/client/components/ui";
-import { useTheme } from "../../../../shared/client/hooks/useTheme";
 
 export function Home() {
-  const theme = useTheme();
-
   const features = [
     {
       icon: Code2,
@@ -44,13 +43,13 @@ export function Home() {
       icon: Zap,
       title: "Boilerplate Generation",
       description:
-        "Use CLI commands or AI tools to generate type-safe Wasp entities in seconds.",
+        "Use AI tools or CLI commands to generate type-safe Wasp components in seconds.",
     },
     {
       icon: Blocks,
       title: "Extensible UI",
       description:
-        "Built-in support for shadcn/ui components and Lucide icons.",
+        "Built-in support for Tailwind 4, shadcn/ui components and Lucide icons.",
     },
     {
       icon: Settings,
@@ -67,24 +66,18 @@ export function Home() {
   ];
 
   const technologies = [
-    { name: "TypeScript", icon: typescriptIcon },
     { name: "Wasp", icon: waspIcon },
+    { name: "Swarm", icon: swarmIcon },
     { name: "Tailwind CSS", icon: tailwindIcon },
-    { name: "Lucide Icons", icon: lucideIcon },
     { name: "shadcn/ui", icon: shadcnuiIcon },
+    { name: "Lucide Icons", icon: lucideIcon },
+    { name: "ESLint", icon: eslintIcon },
+    { name: "Prettier", icon: prettierIcon },
+    { name: "TypeScript", icon: typescriptIcon },
   ];
 
   return (
     <div className="mx-auto max-w-6xl space-y-8 p-6">
-      {/* Theme Switcher */}
-      <div className="flex justify-end">
-        <ThemeSwitcher
-          value={theme.themeSetting}
-          onChange={theme.setTheme}
-          defaultValue="system"
-        />
-      </div>
-
       {/* Hero Section */}
       <Card>
         <CardHeader>
@@ -171,7 +164,7 @@ export function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Typescript config
+                Typescript config{" "}
               </a>
               model. Configuration is split across features, with each directory
               containing a <code>.wasp.ts</code> file that holds declarations
@@ -188,14 +181,28 @@ export default function configureFeature(app: App, feature: string): void {
       path: "/",
       auth: false,
     })
-    .addRoute(feature, "notFound", {
-      path: "/404",
+    .addRoute(feature, "login", {
+      path: "/login",
       auth: false,
     })
-    .addRoute(feature, "notFoundRedirect", {
-      path: "*",
-      auth: false,
+    .addRoute(feature, "dashboard", {
+      path: "/dashboard",
+      auth: true,
     });
+    // CRUD definitions
+    .addCrud(feature, "task", {
+      entities: ["Task"],
+      getAll: {
+        public: ["id", "name", "description"],
+      },
+      get: {
+        public: ["id", "name", "description"],
+      },
+      create: {
+        public: ["id", "name", "description"],
+      },
+      auth: true,
+    })
 }`}
             </code>
           </div>
@@ -207,7 +214,7 @@ export default function configureFeature(app: App, feature: string): void {
               (routes, API endpoints, CRUD operations, background jobs, etc), in
               your Wasp project:
             </p>
-            <code className="block rounded bg-muted px-3 py-2 text-sm">
+            <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
               {`# Create a new "tasks" feature directory, containing a tasks.wasp.ts file
 npm run swarm -- feature tasks
 
@@ -260,7 +267,7 @@ npm run swarm -- crud --feature tasks --datatype Task
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-4">
             {technologies.map((tech) => (
               <div
                 key={tech.name}

@@ -23,13 +23,5 @@ export default function configureFeature(app: App, feature: string): void {
     .addRoute(feature, "home", {
       path: "/",
       auth: false,
-    })
-    .addRoute(feature, "notFound", {
-      path: "/404",
-      auth: false,
-    })
-    .addRoute(feature, "notFoundRedirect", {
-      path: "*",
-      auth: false,
     });
 }
