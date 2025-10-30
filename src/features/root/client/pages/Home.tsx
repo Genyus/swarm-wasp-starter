@@ -10,10 +10,10 @@ import eslintIcon from "../../../../assets/eslint.svg";
 import lucideIcon from "../../../../assets/lucide.svg";
 import prettierIcon from "../../../../assets/prettier.svg";
 import shadcnuiIcon from "../../../../assets/shadcnui.svg";
-import swarmIcon from "../../../../assets/swarm.svg";
 import tailwindIcon from "../../../../assets/tailwind.svg";
 import typescriptIcon from "../../../../assets/typescript.svg";
 import waspIcon from "../../../../assets/wasp.svg";
+import zodIcon from "../../../../assets/zod.svg";
 import {
   Alert,
   AlertDescription,
@@ -66,14 +66,14 @@ export function Home() {
   ];
 
   const technologies = [
-    { name: "Wasp", icon: waspIcon },
-    { name: "Swarm", icon: swarmIcon },
-    { name: "Tailwind CSS", icon: tailwindIcon },
-    { name: "shadcn/ui", icon: shadcnuiIcon },
-    { name: "Lucide Icons", icon: lucideIcon },
     { name: "ESLint", icon: eslintIcon },
+    { name: "Lucide Icons", icon: lucideIcon },
     { name: "Prettier", icon: prettierIcon },
+    { name: "shadcn/ui", icon: shadcnuiIcon },
+    { name: "Tailwind CSS", icon: tailwindIcon },
     { name: "TypeScript", icon: typescriptIcon },
+    { name: "Wasp", icon: waspIcon },
+    { name: "Zod", icon: zodIcon },
   ];
 
   return (
@@ -126,12 +126,13 @@ export function Home() {
           <div>
             <h3 className="mb-2 font-semibold">Project Structure</h3>
             <p className="mb-2 text-sm text-muted-foreground">
-              <code>swarm-wasp</code> defines a feature-based architecture that
-              creates full-stack feature directories combining client- and
-              server-side code. Server-side components (e.g. actions, queries,
-              jobs, etc) are organised with one object per file, in contrast to
-              Wasp's recommended approach of combining multiple components in a
-              single file. This provides a more consistent, modular structure:
+              <code>@ingenyus/swarm-wasp</code> defines a feature-based
+              architecture that creates full-stack feature directories combining
+              client- and server-side code. Server-side components (e.g.
+              actions, queries, jobs, etc) are organised with one object per
+              file, in contrast to Wasp's recommended approach of combining
+              multiple components in a single file. This provides a more
+              consistent, modular structure:
             </p>
 
             <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
@@ -158,7 +159,7 @@ export function Home() {
           <div>
             <h3 className="mb-2 font-semibold">Wasp Configuration</h3>
             <p className="mb-2 text-sm text-muted-foreground">
-              <code>swarm-wasp</code> extends Wasp's{" "}
+              <code>@ingenyus/swarm-wasp</code> extends Wasp's{" "}
               <a
                 href="https://wasp.sh/docs/general/wasp-ts-config"
                 target="_blank"
@@ -189,7 +190,7 @@ export default function configureFeature(app: App, feature: string): void {
     .addRoute(feature, "dashboard", {
       path: "/dashboard",
       auth: true,
-    });
+    })
     // CRUD definitions
     .addCrud(feature, "task", {
       entities: ["Task"],
@@ -203,7 +204,7 @@ export default function configureFeature(app: App, feature: string): void {
         public: ["id", "name", "description"],
       },
       auth: true,
-    })
+    });
 }`}
             </code>
           </div>
@@ -211,9 +212,9 @@ export default function configureFeature(app: App, feature: string): void {
           <div>
             <h3 className="mb-2 font-semibold">Generate Wasp Objects</h3>
             <p className="mb-2 text-sm text-muted-foreground">
-              Use the <code>swarm</code> CLI to quickly scaffold Wasp components
-              (routes, API endpoints, CRUD operations, background jobs, etc), in
-              your Wasp project:
+              Use the <code>@ingenyus/swarm</code> CLI to quickly scaffold Wasp
+              components (routes, API endpoints, CRUD operations, background
+              jobs, etc), in your Wasp project:
             </p>
             <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
               {`# Create a new "tasks" feature directory, containing a feature.wasp.ts file
