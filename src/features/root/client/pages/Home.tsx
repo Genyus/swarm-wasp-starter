@@ -138,7 +138,7 @@ export function Home() {
               {`src/
 ├── features/
 │   └── tasks/
-│       ├── tasks.wasp.ts
+│       ├── feature.wasp.ts
 │       ├── client/
 │       │   └── pages/
 │       │       └── TaskList.tsx
@@ -167,9 +167,10 @@ export function Home() {
                 Typescript config{" "}
               </a>
               model. Configuration is split across features, with each directory
-              containing a <code>.wasp.ts</code> file that holds declarations
-              for that feature. Fluent helper methods make configuration more
-              concise and readable than the default declarative structure:
+              containing a <code>feature.wasp.ts</code> file that holds
+              declarations for that feature. Fluent helper methods make
+              configuration more concise and readable than the default
+              declarative structure:
             </p>
             <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
               {`import { App } from "@ingenyus/swarm-wasp";
@@ -215,7 +216,7 @@ export default function configureFeature(app: App, feature: string): void {
               your Wasp project:
             </p>
             <code className="block rounded bg-muted px-3 py-2 font-mono text-xs whitespace-pre">
-              {`# Create a new "tasks" feature directory, containing a tasks.wasp.ts file
+              {`# Create a new "tasks" feature directory, containing a feature.wasp.ts file
 npm run swarm -- feature tasks
 
 # Configure a route linked to a page component in the client directory
