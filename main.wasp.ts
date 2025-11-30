@@ -9,6 +9,7 @@ const app = await App.create("swarm-wasp-starter", {
     '<meta charset="UTF-8">',
   ],
 });
+
 app.client({
   rootComponent: {
     importDefault: "Layout",
