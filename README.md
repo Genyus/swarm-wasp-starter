@@ -58,7 +58,7 @@ src/
 
 - Node.js 22+ 
 - npm
-- Wasp 0.18.x
+- Wasp 0.19.x
 
 ### Installation
 
